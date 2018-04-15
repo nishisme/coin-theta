@@ -21,7 +21,7 @@ class Program implements ActionListener {
 		t3 = new TextField();
 		l1 = new Label("Name");
 		l2 = new Label("Phone no.");
-		l3 = new Label("Email ID");
+		l3 = new Label("email ID");
 		f.setSize(400, 400);
 		f.setLayout(null);
 		l1.setBounds(20, 40, 100, 30);
@@ -50,10 +50,15 @@ class Program implements ActionListener {
 		if (e.getSource() == b1) {
 			try {
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-				File f = new File("contacts.txt");
+				File f = new File("contacts.csv");
 				FileWriter fw = new FileWriter(f, true);
 				PrintWriter pw = new PrintWriter(fw);
-				pw.println(t1.getText() + "---" + t2.getText() + "---" + t3.getText());
+				fw.append(t1.getText());
+				fw.append(',');
+				fw.append(t2.getText());
+				fw.append(',');
+				fw.append(t3.getText());
+				fw.append('\n');
 				t1.setText("");
 				t2.setText("");
 				t3.setText("");
